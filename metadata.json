@@ -1,0 +1,6 @@
+{
+  "name": "Le Théâtre des Algorithmes Racontés",
+  "description": "Chaque algorithme devient une pièce de théâtre animée : personnages rétro-sci-fi, dialogues polis, bulles de répliques et script vivant adapté à vos données.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
