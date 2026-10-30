@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moncef Zbidi — Portfolio | Informatique de gestion & E-Business</title>
+<meta name="description" content="Portfolio professionnel de Moncef Zbidi, étudiant en informatique de gestion spécialisé en E-Business à l'ESSECT. Développement web, mobile, Business Intelligence." />
+<meta property="og:title" content="Moncef Zbidi — Portfolio" />
+<meta property="og:description" content="Étudiant en informatique de gestion | Spécialiste E-Business" />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%236C5CE7'/><stop offset='1' stop-color='%2300C9A7'/></linearGradient></defs><rect width='100' height='100' rx='20' fill='url(%23g)'/><text x='50' y='68' font-family='Arial' font-size='48' font-weight='bold' text-anchor='middle' fill='white'>MZ</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============ VARIABLES & THÈMES ============ */
+:root {
+  --violet: #6C5CE7;
+  --turquoise: #00C9A7;
+  --orange: #FFB86B;
+  --gradient: linear-gradient(135deg, #6C5CE7, #00C9A7);
+  --gradient-soft: linear-gradient(135deg, rgba(108,92,231,.12), rgba(0,201,167,.12));
+  --bg: #10121F;
+  --bg-alt: #161a2e;
+  --card: rgba(255, 255, 255, 0.06);
+  --card-solid: #1a1e35;
+  --text: #F5F5FA;
+  --text-muted: #b8bcd0;
+  --border: rgba(255, 255, 255, 0.1);
+  --shadow: 0 20px 60px rgba(0,0,0,.45);
+  --radius: 24px;
+  --radius-sm: 16px;
+  --nav-bg: rgba(16, 18, 31, 0.72);
+}
+[data-theme="light"] {
+  --bg: #F5F7FF;
+  --bg-alt: #ffffff;
+  --card: #FFFFFF;
+  --card-solid: #FFFFFF;
+  --text: #25263A;
+  --text-muted: #5b5d75;
+  --border: #E3E6F0;
+  --shadow: 0 20px 50px rgba(108,92,231,.10);
+  --nav-bg: rgba(245, 247, 255, 0.78);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition: background .45s ease, color .45s ease;
+}
+body[dir="rtl"] { font-family: 'Poppins', 'Inter', sans-serif; }
+h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; line-height: 1.2; font-weight: 700; }
+a { color: inherit; text-decoration: none; transition: color .3s ease; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+:focus-visible { outline: 2px solid var(--turquoise); outline-offset: 3px; border-radius: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ============ FOND DÉCORATIF ============ */
+.bg-decor { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.bg-decor::before, .bg-decor::after {
+  content: ''; position: absolute; border-radius: 50%;
+  filter: blur(120px); opacity: .35; animation: float 18s ease-in-out infinite;
+}
+.bg-decor::before { width: 520px; height: 520px; background: var(--violet); top: -160px; left: -120px; }
+.bg-decor::after { width: 460px; height: 460px; background: var(--turquoise); bottom: -140px; right: -120px; animation-delay: -9s; }
+[data-theme="light"] .bg-decor::before, [data-theme="light"] .bg-decor::after { opacity: .18; }
+@keyframes float {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(60px, 40px) scale(1.15); }
+}
+
+/* ============ NAVIGATION ============ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: var(--nav-bg); border-bottom: 1px solid var(--border);
+  transition: all .3s ease;
+}
+.nav-inner {
+  max-width: 1280px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+}
+.logo { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.05rem; }
+.logo-mark {
+  width: 42px; height: 42px; border-radius: 12px; background: var(--gradient);
+  display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 1rem;
+  box-shadow: 0 8px 22px rgba(108,92,231,.4);
+}
+.logo-name { white-space: nowrap; }
+
+.nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+.nav-links a {
+  padding: 8px 14px; border-radius: 10px; font-size: .92rem; font-weight: 500;
+  color: var(--text-muted); transition: all .25s ease; position: relative;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--text); background: var(--gradient-soft); }
+.nav-links a.active::after {
+  content: ''; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%);
+  width: 5px; height: 5px; border-radius: 50%; background: var(--gradient);
+}
+
+.nav-actions { display: flex; align-items: center; gap: 8px; }
+.icon-btn {
+  width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+  background: var(--card); border: 1px solid var(--border); color: var(--text);
+  transition: all .25s ease;
+}
+.icon-btn:hover { transform: translateY(-2px); border-color: var(--violet); box-shadow: 0 8px 20px rgba(108,92,231,.25); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+.lang-switch {
+  display: flex; background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 3px; gap: 2px;
+}
+.lang-switch button {
+  padding: 6px 10px; border-radius: 9px; font-size: .78rem; font-weight: 600;
+  color: var(--text-muted); transition: all .25s ease;
+}
+.lang-switch button.active { background: var(--gradient); color: #fff; }
+.hamburger { display: none; }
+
+@media (max-width: 960px) {
+  .nav-links {
+    position: fixed; top: 70px; right: 16px; left: 16px; flex-direction: column;
+    align-items: stretch; background: var(--card-solid); border: 1px solid var(--border);
+    border-radius: var(--radius-sm); padding: 12px; gap: 4px; box-shadow: var(--shadow);
+    transform: translateY(-16px); opacity: 0; pointer-events: none; transition: all .3s ease;
+  }
+  .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .nav-links a { padding: 12px 16px; }
+  .hamburger { display: grid; }
+  .lang-switch button { padding: 6px 8px; font-size: .72rem; }
+  .logo-name { display: none; }
+}
+
+/* ============ LAYOUT ============ */
+section { padding: 100px 24px; max-width: 1280px; margin: 0 auto; }
+.section-head { text-align: center; margin-bottom: 60px; }
+.section-tag {
+  display: inline-block; padding: 6px 16px; border-radius: 100px;
+  background: var(--gradient-soft); color: var(--violet); font-size: .8rem;
+  font-weight: 600; letter-spacing: .5px; text-transform: uppercase; margin-bottom: 16px;
+}
+.section-title {
+  font-size: clamp(1.9rem, 4vw, 2.8rem); margin-bottom: 14px;
+  background: var(--gradient); -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; display: inline-block;
+}
+.section-sub { color: var(--text-muted); max-width: 640px; margin: 0 auto; font-size: 1.02rem; }
+
+/* ============ HERO ============ */
+.hero { min-height: 100vh; display: flex; align-items: center; padding-top: 120px; padding-bottom: 80px; }
+.hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 70px; align-items: center; width: 100%; }
+.hero-hello {
+  display: inline-flex; align-items: center; gap: 10px; padding: 8px 18px;
+  border-radius: 100px; background: var(--card); border: 1px solid var(--border);
+  font-size: .88rem; font-weight: 500; color: var(--text-muted); margin-bottom: 24px;
+}
+.hero-hello .dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--turquoise);
+  box-shadow: 0 0 0 4px rgba(0,201,167,.2); animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 4px rgba(0,201,167,.2); }
+  50% { box-shadow: 0 0 0 10px rgba(0,201,167,0); }
+}
+.hero h1 { font-size: clamp(2rem, 5vw, 3.4rem); margin-bottom: 20px; font-weight: 800; }
+.hero h1 .grad {
+  background: var(--gradient); -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-pitch { font-size: 1.12rem; color: var(--text-muted); margin-bottom: 18px; font-weight: 500; }
+.hero-desc { color: var(--text-muted); margin-bottom: 34px; max-width: 560px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px;
+  border-radius: 14px; font-weight: 600; font-size: .95rem;
+  transition: all .3s ease; border: 1px solid transparent;
+}
+.btn svg { width: 18px; height: 18px; }
+.btn-primary { background: var(--gradient); color: #fff; box-shadow: 0 12px 30px rgba(108,92,231,.35); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(108,92,231,.5); }
+.btn-ghost { background: var(--card); border-color: var(--border); color: var(--text); }
+.btn-ghost:hover { border-color: var(--violet); transform: translateY(-3px); }
+.hero-socials { display: flex; gap: 12px; }
+
+.hero-photo-wrap { display: flex; justify-content: center; position: relative; }
+.hero-photo-ring {
+  position: relative; width: 340px; height: 340px; border-radius: 50%; padding: 6px;
+  background: var(--gradient);
+  box-shadow: 0 0 60px rgba(108,92,231,.45), 0 0 100px rgba(0,201,167,.25);
+  animation: spin-ring 12s linear infinite;
+}
+@keyframes spin-ring { to { transform: rotate(360deg); } }
+.hero-photo-inner {
+  width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
+  background: var(--bg); position: relative; animation: spin-ring-reverse 12s linear infinite;
+}
+@keyframes spin-ring-reverse { to { transform: rotate(-360deg); } }
+.hero-photo-inner img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.hero-photo-wrap::before, .hero-photo-wrap::after {
+  content: ''; position: absolute; border-radius: 50%;
+  border: 1px dashed rgba(108,92,231,.3); animation: spin-ring 25s linear infinite;
+}
+.hero-photo-wrap::before { width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+.hero-photo-wrap::after {
+  width: 460px; height: 460px; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  animation-direction: reverse; border-color: rgba(0,201,167,.25);
+}
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+  .hero-cta, .hero-socials { justify-content: center; }
+  .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-photo-ring { width: 260px; height: 260px; }
+  .hero-photo-wrap::before { width: 300px; height: 300px; }
+  .hero-photo-wrap::after { width: 340px; height: 340px; }
+}
+
+/* ============ ABOUT ============ */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.about-text p { color: var(--text-muted); margin-bottom: 18px; font-size: 1.02rem; }
+.about-text strong { color: var(--text); font-weight: 600; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+.stat-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 22px 16px; text-align: center; transition: all .35s ease;
+}
+.stat-card:hover { transform: translateY(-6px); border-color: var(--violet); box-shadow: 0 16px 40px rgba(108,92,231,.18); }
+.stat-num {
+  font-size: 1.9rem; font-weight: 800; background: var(--gradient);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif; line-height: 1; margin-bottom: 6px;
+}
+.stat-label { font-size: .82rem; color: var(--text-muted); font-weight: 500; }
+
+.about-visual {
+  position: relative; background: var(--gradient-soft); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 40px; aspect-ratio: 1; display: grid; place-items: center; overflow: hidden;
+}
+.about-visual::before {
+  content: ''; position: absolute; inset: 20px; border-radius: var(--radius-sm);
+  background: var(--gradient); opacity: .12; animation: float 8s ease-in-out infinite;
+}
+.about-visual-content { position: relative; text-align: center; width: 100%; }
+.about-visual-content .code {
+  font-family: 'Courier New', monospace; font-size: .85rem; color: var(--text-muted);
+  text-align: left; background: var(--card-solid); padding: 24px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); line-height: 1.7; overflow-x: auto;
+}
+.about-visual-content .code .kw { color: var(--violet); font-weight: 700; }
+.about-visual-content .code .str { color: var(--turquoise); }
+.about-visual-content .code .fn { color: var(--orange); }
+
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } .stats { grid-template-columns: 1fr; } }
+
+/* ============ SKILLS ============ */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.skill-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 28px; transition: all .35s ease; position: relative; overflow: hidden;
+}
+.skill-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gradient); transform: scaleX(0); transform-origin: left; transition: transform .4s ease;
+}
+.skill-card:hover { transform: translateY(-8px); border-color: var(--violet); box-shadow: 0 24px 50px rgba(108,92,231,.18); }
+.skill-card:hover::before { transform: scaleX(1); }
+.skill-head { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+.skill-icon {
+  width: 46px; height: 46px; border-radius: 13px; background: var(--gradient);
+  display: grid; place-items: center; color: #fff; flex-shrink: 0;
+}
+.skill-icon svg { width: 22px; height: 22px; }
+.skill-title { font-size: 1.08rem; font-weight: 700; }
+.skill-list { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-list li {
+  padding: 6px 13px; border-radius: 100px; background: var(--gradient-soft);
+  font-size: .82rem; font-weight: 500; color: var(--text); border: 1px solid var(--border);
+  transition: all .25s ease;
+}
+.skill-list li:hover { background: var(--gradient); color: #fff; transform: translateY(-2px); }
+
+/* ============ PROJECTS ============ */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; }
+.project-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; transition: all .4s ease; display: flex; flex-direction: column;
+}
+.project-card:hover { transform: translateY(-10px); border-color: var(--violet); box-shadow: 0 30px 60px rgba(108,92,231,.22); }
+.project-thumb { aspect-ratio: 16/10; background: var(--gradient); position: relative; overflow: hidden; display: grid; place-items: center; }
+.project-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,.5)); }
+.project-thumb svg {
+  width: 70px; height: 70px; color: rgba(255,255,255,.95);
+  position: relative; z-index: 2; transition: transform .4s ease;
+}
+.project-card:hover .project-thumb svg { transform: scale(1.15) rotate(-5deg); }
+.project-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.project-body h3 { font-size: 1.15rem; margin-bottom: 10px; }
+.project-body p { color: var(--text-muted); font-size: .92rem; margin-bottom: 16px; flex: 1; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+.project-tags span {
+  font-size: .72rem; padding: 4px 10px; border-radius: 100px;
+  background: var(--gradient-soft); color: var(--text-muted); font-weight: 500; border: 1px solid var(--border);
+}
+.project-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.project-links .btn { padding: 10px 18px; font-size: .82rem; border-radius: 11px; }
+.project-links .btn-disabled { opacity: .55; cursor: not-allowed; pointer-events: none; }
+
+/* ============ CERTIFICATIONS ============ */
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; }
+.cert-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 26px; transition: all .35s ease; display: flex; gap: 18px; align-items: flex-start;
+}
+.cert-card:hover { transform: translateY(-6px); border-color: var(--turquoise); box-shadow: 0 20px 45px rgba(0,201,167,.18); }
+.cert-icon {
+  width: 48px; height: 48px; border-radius: 13px; background: var(--gradient);
+  display: grid; place-items: center; color: #fff; flex-shrink: 0;
+}
+.cert-icon svg { width: 22px; height: 22px; }
+.cert-info h3 { font-size: 1rem; margin-bottom: 4px; }
+.cert-info .org { font-size: .85rem; color: var(--text-muted); margin-bottom: 8px; }
+.cert-info .date {
+  display: inline-block; font-size: .72rem; padding: 3px 10px; border-radius: 100px;
+  background: var(--gradient-soft); color: var(--violet); font-weight: 600;
+}
+.cert-info .pending { background: rgba(255,184,107,.15); color: var(--orange); }
+
+/* ============ GALERIE BENTO ============ */
+.gallery { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 180px; gap: 16px; }
+.gallery-item {
+  border-radius: var(--radius-sm); overflow: hidden; position: relative;
+  background: var(--card); border: 1px solid var(--border);
+}
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s ease; }
+.gallery-item:hover img { transform: scale(1.1); }
+.gallery-item::after {
+  content: '🔍'; position: absolute; inset: 0; background: rgba(16,18,31,.55);
+  display: grid; place-items: center; font-size: 1.6rem; opacity: 0; transition: opacity .35s ease;
+}
+.gallery-item:hover::after { opacity: 1; }
+.gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.gallery-item:nth-child(2) { grid-column: span 2; grid-row: span 1; }
+.gallery-item:nth-child(3) { grid-column: span 1; grid-row: span 1; }
+.gallery-item:nth-child(4) { grid-column: span 1; grid-row: span 1; }
+.gallery-item:nth-child(5) { grid-column: span 2; grid-row: span 1; }
+.gallery-item:nth-child(6) { grid-column: span 2; grid-row: span 1; }
+@media (max-width: 720px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 150px; }
+  .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+  .gallery-item:nth-child(2) { grid-column: span 2; grid-row: span 1; }
+  .gallery-item:nth-child(5),
+  .gallery-item:nth-child(6) { grid-column: span 1; grid-row: span 1; }
+}
+
+/* ============ CONTACT ============ */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; }
+.contact-info { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; }
+.contact-info h3 { margin-bottom: 12px; font-size: 1.4rem; }
+.contact-info > p { color: var(--text-muted); margin-bottom: 26px; }
+.contact-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+.contact-item:last-child { border-bottom: none; }
+.contact-item .ico {
+  width: 42px; height: 42px; border-radius: 12px; background: var(--gradient);
+  display: grid; place-items: center; color: #fff; flex-shrink: 0;
+}
+.contact-item .ico svg { width: 18px; height: 18px; }
+.contact-item .label { font-size: .78rem; color: var(--text-muted); }
+.contact-item .val { font-weight: 600; font-size: .95rem; word-break: break-all; }
+.contact-item .val a:hover { color: var(--turquoise); }
+
+.contact-form { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; }
+.form-row { margin-bottom: 18px; }
+.form-row label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 8px; }
+.form-row input, .form-row textarea {
+  width: 100%; padding: 13px 16px; border-radius: 12px; background: var(--bg-alt);
+  border: 1px solid var(--border); color: var(--text); font-family: inherit; font-size: .95rem;
+  transition: all .25s ease;
+}
+.form-row input:focus, .form-row textarea:focus {
+  outline: none; border-color: var(--violet); box-shadow: 0 0 0 4px rgba(108,92,231,.15);
+}
+.form-row textarea { resize: vertical; min-height: 130px; }
+.form-row .error { color: #ff6b6b; font-size: .8rem; margin-top: 6px; display: none; }
+
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+
+/* ============ FOOTER ============ */
+footer { border-top: 1px solid var(--border); padding: 50px 24px 30px; margin-top: 60px; }
+.footer-inner {
+  max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px; margin-bottom: 30px;
+}
+.footer-brand p { color: var(--text-muted); font-size: .9rem; margin-top: 14px; max-width: 320px; }
+.footer-col h4 { font-size: .95rem; margin-bottom: 16px; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { color: var(--text-muted); font-size: .9rem; transition: color .25s ease; }
+.footer-col ul li a:hover { color: var(--turquoise); }
+.footer-bottom {
+  max-width: 1280px; margin: 0 auto; padding-top: 24px; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  font-size: .85rem; color: var(--text-muted);
+}
+@media (max-width: 720px) { .footer-inner { grid-template-columns: 1fr; gap: 28px; } }
+
+/* Back to top */
+.back-top {
+  position: fixed; bottom: 24px; right: 24px; z-index: 900;
+  width: 48px; height: 48px; border-radius: 50%; background: var(--gradient);
+  color: #fff; display: grid; place-items: center; box-shadow: 0 12px 30px rgba(108,92,231,.4);
+  transition: all .3s ease;
+}
+.back-top:hover { transform: translateY(-4px) scale(1.05); }
+body[dir="rtl"] .back-top { right: auto; left: 24px; }
+</style>
+</head>
+<body>
+
+<div class="bg-decor"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#accueil" class="logo">
+      <div class="logo-mark">MZ</div>
+      <span class="logo-name">Moncef Zbidi</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#accueil" class="active">Accueil</a></li>
+      <li><a href="#apropos">À propos</a></li>
+      <li><a href="#competences">Compétences</a></li>
+      <li><a href="#projets">Projets</a></li>
+      <li><a href="#certifications">Certifications</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-switch">
+        <button class="active">FR</button>
+        <button>EN</button>
+        <button>AR</button>
+      </div>
+      <button class="icon-btn" aria-label="Changer de thème">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </button>
+      <button class="icon-btn hamburger" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="accueil">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <div class="hero-hello">
+        <span class="dot"></span>
+        Bonjour, je suis Moncef Zbidi
+      </div>
+      <h1>
+        Étudiant en informatique de gestion<br>
+        <span class="grad">Spécialiste E-Business</span>
+      </h1>
+      <p class="hero-pitch">
+        Je transforme les idées en solutions digitales grâce au développement web, aux applications mobiles et à l'analyse des données.
+      </p>
+      <p class="hero-desc">
+        Passionné par les technologies numériques, le développement informatique et les solutions innovantes, je cherche à mettre mes compétences au service de projets concrets et à continuer à progresser dans le domaine du digital.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Télécharger mon CV
+        </a>
+        <a href="#projets" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Découvrir mes projets
+        </a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://www.linkedin.com/in/moncef-zbidi" target="_blank" rel="noopener" class="icon-btn" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+        <a href="https://github.com/moncefzbidi" target="_blank" rel="noopener" class="icon-btn" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+        </a>
+        <a href="mailto:zbidimoncef2@gmail.com" class="icon-btn" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <div class="hero-photo-inner">
+          <img src="c:\Users\ElectroShop\Downloads\1bb63de6-daec-4fd8-9075-656b19d45b91 (1).jfif" alt="Photo de profil de Moncef Zbidi" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="apropos">
+  <div class="section-head">
+    <span class="section-tag">À propos</span>
+    <h2 class="section-title">Qui suis-je ?</h2>
+    <p class="section-sub">Un étudiant passionné par le digital, les technologies et les solutions innovantes.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        Je suis <strong>Moncef Zbidi</strong>, étudiant en <strong>informatique de gestion</strong>, spécialisé en <strong>E-Business</strong> à l'<strong>ESSECT</strong>. Je m'intéresse au développement web et mobile, à la programmation et à la Business Intelligence.
+      </p>
+      <p>
+        Mon objectif est de concevoir des solutions numériques utiles, de développer continuellement mes compétences et de contribuer à des projets innovants.
+      </p>
+      <p>
+        Actuellement en <strong>3ème année de Licence Business Computing</strong>, je souhaite mettre mes compétences au service d'entreprises et de projets concrets dans le domaine du digital.
+      </p>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Années d'expérience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Domaines de compétences</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Projets réalisés</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-visual">
+      <div class="about-visual-content">
+        <div class="code">
+<span class="kw">const</span> <span class="fn">moncef</span> = {<br>
+&nbsp;&nbsp;nom: <span class="str">"Zbidi"</span>,<br>
+&nbsp;&nbsp;formation: <span class="str">"ESSECT"</span>,<br>
+&nbsp;&nbsp;spécialité: <span class="str">"E-Business"</span>,<br>
+&nbsp;&nbsp;passions: [<span class="str">"Web"</span>, <span class="str">"Mobile"</span>],<br>
+&nbsp;&nbsp;objectif: <span class="str">"Innover"</span><br>
+};
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="competences">
+  <div class="section-head">
+    <span class="section-tag">Compétences</span>
+    <h2 class="section-title">Mes savoir-faire techniques</h2>
+    <p class="section-sub">Un ensemble de compétences couvrant le développement, la data et le digital.</p>
+  </div>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-head">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3 class="skill-title">Développement Web</h3>
+      </div>
+      <ul class="skill-list">
+        <li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>PHP</li><li>Laravel</li><li>React.js</li><li>Bootstrap</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-head">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <h3 class="skill-title">Programmation</h3>
+      </div>
+      <ul class="skill-list">
+        <li>Java</li><li>POO</li><li>SQL</li><li>MySQL</li><li>Applications</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-head">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3 class="skill-title">Développement Mobile</h3>
+      </div>
+      <ul class="skill-list">
+        <li>Flutter</li><li>Dart</li><li>UI Mobile</li><li>Multiplateforme</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-head">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3 class="skill-title">Business Intelligence</h3>
+      </div>
+      <ul class="skill-list">
+        <li>Power BI</li><li>Excel</li><li>SQL</li><li>Visualisation</li><li>Dashboards</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <div class="skill-head">
+        <div class="skill-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        </div>
+        <h3 class="skill-title">E-Business</h3>
+      </div>
+      <ul class="skill-list">
+        <li>E-commerce</li><li>Marketing digital</li><li>UX</li><li>Gestion de projets</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJETS ============ -->
+<section id="projets">
+  <div class="section-head">
+    <span class="section-tag">Projets</span>
+    <h2 class="section-title">Mes réalisations</h2>
+    <p class="section-sub">Une sélection de projets académiques et personnels illustrant mes compétences.</p>
+  </div>
+
+  <div class="projects-grid">
+    <article class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      </div>
+      <div class="project-body">
+        <h3>Application Web E-Commerce</h3>
+        <p>Plateforme de commerce électronique avec gestion des produits, panier et interface utilisateur moderne.</p>
+        <div class="project-tags">
+          <span>HTML</span><span>CSS</span><span>PHP</span><span>Laravel</span><span>MySQL</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="btn btn-primary btn-disabled">Lien à ajouter</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="project-body">
+        <h3>Application Java de Gestion</h3>
+        <p>Application de gestion développée en Java avec architecture orientée objet et connexion à une base de données.</p>
+        <div class="project-tags">
+          <span>Java</span><span>JavaFX</span><span>Maven</span><span>MySQL</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="btn btn-primary btn-disabled">Lien à ajouter</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="project-body">
+        <h3>Dashboard Business Intelligence</h3>
+        <p>Tableau de bord interactif pour visualiser des indicateurs, analyser des données et faciliter la décision.</p>
+        <div class="project-tags">
+          <span>Power BI</span><span>Excel</span><span>SQL</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="btn btn-primary btn-disabled">Lien à ajouter</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="project-card">
+      <div class="project-thumb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      </div>
+      <div class="project-body">
+        <h3>Application Mobile Flutter</h3>
+        <p>Application mobile avec interface intuitive, navigation simple et fonctionnalités adaptées aux utilisateurs.</p>
+        <div class="project-tags">
+          <span>Flutter</span><span>Dart</span><span>Mobile UI</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="btn btn-primary btn-disabled">Lien à ajouter</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ CERTIFICATIONS ============ -->
+<section id="certifications">
+  <div class="section-head">
+    <span class="section-tag">Parcours</span>
+    <h2 class="section-title">Certifications & Formation</h2>
+    <p class="section-sub">Mon parcours académique et mes certifications.</p>
+  </div>
+
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div class="cert-info">
+        <h3>Licence en Informatique de Gestion</h3>
+        <p class="org">ESSECT — École Supérieure des Sciences Économiques et Commerciales de Tunis</p>
+        <span class="date">En cours</span>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+      </div>
+      <div class="cert-info">
+        <h3>Certification Excel</h3>
+        <p class="org">Organisme à compléter</p>
+        <span class="date">Date à compléter</span>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+      </div>
+      <div class="cert-info">
+        <h3>Certification Power BI</h3>
+        <p class="org">Organisme à compléter</p>
+        <span class="date">Date à compléter</span>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="cert-info">
+        <h3>Formation en Automatisation n8n</h3>
+        <p class="org">Formation en ligne</p>
+        <span class="date pending">En cours</span>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="cert-info">
+        <h3>Formation en Intelligence Artificielle</h3>
+        <p class="org">Formation en ligne</p>
+        <span class="date pending">En cours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIE ============ -->
+<section id="galerie">
+  <div class="section-head">
+    <span class="section-tag">Galerie</span>
+    <h2 class="section-title">Moments & projets visuels</h2>
+    <p class="section-sub">Quelques images illustrant mon univers professionnel et créatif.</p>
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-item"><img src="https://picsum.photos/800/600?random=1" alt="Image de galerie 1" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://picsum.photos/800/600?random=2" alt="Image de galerie 2" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://picsum.photos/800/600?random=3" alt="Image de galerie 3" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://picsum.photos/800/600?random=4" alt="Image de galerie 4" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://picsum.photos/800/600?random=5" alt="Image de galerie 5" loading="lazy" /></div>
+    <div class="gallery-item"><img src="https://picsum.photos/800/600?random=6" alt="Image de galerie 6" loading="lazy" /></div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="section-head">
+    <span class="section-tag">Contact</span>
+    <h2 class="section-title">Travaillons ensemble</h2>
+    <p class="section-sub">N'hésitez pas à me contacter pour toute opportunité ou collaboration.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Mes coordonnées</h3>
+      <p>Disponible pour discuter de projets, stages ou collaborations professionnelles.</p>
+
+      <div class="contact-item">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <div class="label">Email</div>
+          <div class="val"><a href="mailto:zbidimoncef2@gmail.com">zbidimoncef2@gmail.com</a></div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div>
+          <div class="label">Téléphone</div>
+          <div class="val"><a href="tel:+21655000216">+216 55 000 216</a></div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </div>
+        <div>
+          <div class="label">LinkedIn</div>
+          <div class="val"><a href="https://www.linkedin.com/in/moncef-zbidi" target="_blank" rel="noopener">/in/moncef-zbidi</a></div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="ico">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 22 12c0-5.52-4.48-10-10-10z"/></svg>
+        </div>
+        <div>
+          <div class="label">GitHub</div>
+          <div class="val"><a href="https://github.com/moncefzbidi" target="_blank" rel="noopener">/moncefzbidi</a></div>
+        </div>
+      </div>
+    </div>
+
+    <form class="contact-form" action="#" method="post">
+      <div class="form-row">
+        <label for="name">Nom complet</label>
+        <input type="text" id="name" name="name" placeholder="Votre nom" required />
+        <div class="error">Veuillez entrer votre nom.</div>
+      </div>
+      <div class="form-row">
+        <label for="email">Adresse e-mail</label>
+        <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+        <div class="error">Veuillez entrer un email valide.</div>
+      </div>
+      <div class="form-row">
+        <label for="subject">Sujet</label>
+        <input type="text" id="subject" name="subject" placeholder="Sujet de votre message" required />
+        <div class="error">Veuillez indiquer un sujet.</div>
+      </div>
+      <div class="form-row">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Votre message..." required></textarea>
+        <div class="error">Veuillez écrire votre message.</div>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        Envoyer le message
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#accueil" class="logo">
+        <div class="logo-mark">MZ</div>
+        <span class="logo-name">Moncef Zbidi</span>
+      </a>
+      <p>Étudiant en informatique de gestion, spécialisé en E-Business. Passionné par le développement et les solutions digitales innovantes.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#projets">Projets</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:zbidimoncef2@gmail.com">zbidimoncef2@gmail.com</a></li>
+        <li><a href="tel:+21655000216">+216 55 000 216</a></li>
+        <li><a href="https://www.linkedin.com/in/moncef-zbidi" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/moncefzbidi" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Moncef Zbidi — Portfolio professionnel. Tous droits réservés.</span>
+    <a href="#accueil">Retour en haut ↑</a>
+  </div>
+</footer>
+
+<a href="#accueil" class="back-top" aria-label="Retour en haut">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M18 15l-6-6-6 6"/></svg>
+</a>
+
+</body>
+</html>
